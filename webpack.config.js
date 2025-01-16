@@ -3,10 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: {
+    content: './src/index.tsx',
+    background: './src/background.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].js',
   },
   module: {
     rules: [
