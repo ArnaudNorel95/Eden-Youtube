@@ -18,11 +18,12 @@ export const hideElements = async () => {
 
                         const waitForElements = () => {
                             const observer = new MutationObserver((mutations, obs) => {
-                                const shorts = document.querySelectorAll("ytd-reel-shelf-renderer");
+                                const shorts = document.querySelectorAll("ytd-reel-shelf-renderer, ytd-rich-shelf-renderer");
                                 if (shorts.length > 0) {
                                     console.log("🚀 ~ Shorts found:", shorts);
                                     shorts.forEach((short:any) => short.style.display = "none");
                                     obs.disconnect(); // Stop observing once shorts are found
+                                    console.log("Observer disconnected");
                                 }
 
                                 console.log("🚀 ~ waitForShorts ~ shorts:", shorts);
@@ -38,14 +39,6 @@ export const hideElements = async () => {
 
                         // Start waiting for the element to appear
                         waitForElements();
-
-                        // TODO move to the Mutations
-                        // const shorts = document.querySelectorAll("ytd-reel-shelf-renderer");
-                        // const shortsMainPage = document.querySelectorAll("ytd-rich-shelf-renderer")
-                        // console.log("🚀 ~ Shorts found:", shorts);
-                        // console.log("🚀 ~ waitForShorts ~ shorts:", shortsMainPage);
-                        // shorts.forEach(e => e.remove());
-                        // shortsMainPage.forEach(e => e.remove());
                     }
                 }
             );
@@ -55,7 +48,6 @@ export const hideElements = async () => {
 
 const looser = () => {
     console.log("looser");
-    alert("OK Faggot");
 }
 
 const Menu: React.FC = () => {
